@@ -3,5 +3,7 @@
 ## Running
 
     pub install
-    pub serve
-    # open http://localhost:8080/browser_hero.html
+    pub deploy
+    cd deploy && python -m SimpleHTTPServer 8080
+
+open http://localhost:8080/
