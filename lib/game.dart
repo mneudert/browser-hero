@@ -7,6 +7,7 @@ import 'util.dart';
 part 'game/fps.dart';
 part 'game/level.dart';
 part 'game/renderer.dart';
+part 'game/target.dart';
 
 class Game
 {

@@ -28,7 +28,7 @@ class Level
     layer.ctx.textAlign = 'left';
     layer.ctx.fillText('Level: ${current}', 10, 25);
 
-    layer.ctx.fillStyle = 'rgb(102, 229, 102)';
+    layer.ctx.fillStyle = 'rgba(102, 229, 102, 0.85)';
     layer.ctx.fillRect(180, 37, 120, 37 * current);
 
     for (int i = 0; i < current; i++) {
@@ -42,10 +42,11 @@ class Level
       layer.ctx.stroke();
     }
 
+    createTargets(layer);
     drawTargets(layer);
   }
 
-  void drawTargets(RenderLayer layer)
+  void createTargets(RenderLayer layer)
   {
     int now = (new DateTime.now().millisecondsSinceEpoch / 1000).toInt();
 
@@ -67,15 +68,37 @@ class Level
     lastTarget = now;
 
     for (int i = 0; i < current; i++) {
-      int seed = new Random().nextInt(32 - (now - targetTimes[i]));
+      int delta = now - targetTimes[i];
+
+      if (0 > delta) {
+        continue;
+      }
+
+      int seed = new Random().nextInt(10 - delta);
 
       if (0 < seed) {
         continue;
       }
 
       targetTimes[i] = now;
+      targets.add(new Target(i + 1));
+    }
+  }
 
-      print('new target level ${i}: ${targetTimes[i]}');
+  void drawTargets(RenderLayer layer) {
+    List destructables = [];
+    int now            = new DateTime.now().millisecondsSinceEpoch;
+
+    for (var target in targets) {
+      target.moveAndDraw(layer, now);
+
+      if (target.outOfBounds()) {
+        destructables.add(target);
+      }
+    }
+
+    for (var destructable in destructables) {
+      targets.remove(destructable);
     }
   }
 }
