@@ -1,6 +1,7 @@
 library game;
 
 import 'dart:html';
+import 'dart:math';
 import 'util.dart';
 
 part 'game/fps.dart';
