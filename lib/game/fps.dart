@@ -34,7 +34,7 @@ class Fps
   void draw(RenderLayer layer)
   {
     layer.ctx.font = '20px monospace';
-    layer.ctx.fillStyle = 'yellow';
+    layer.ctx.fillStyle = 'rgb(229, 229, 76)';
     layer.ctx.textAlign = 'right';
     layer.ctx.fillText('FPS: ${fps}', 790, 25);
   }

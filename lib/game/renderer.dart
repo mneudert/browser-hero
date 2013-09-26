@@ -29,12 +29,5 @@ class Renderer
 
     game.level.draw(layer);
     game.fps.draw(layer);
-
-    layer.ctx.beginPath();
-    layer.ctx.moveTo(0, 36);
-    layer.ctx.lineTo(800, 36);
-    layer.ctx.lineWidth = 1;
-    layer.ctx.strokeStyle = 'grey';
-    layer.ctx.stroke();
   }
 }
