@@ -17,7 +17,7 @@ class Level
 
   void draw(RenderLayer layer)
   {
-    layer.ctx.font = '20px Georgia';
+    layer.ctx.font = '20px monospace';
     layer.ctx.fillStyle = 'yellow';
     layer.ctx.textAlign = 'left';
     layer.ctx.fillText('Level: ${current}', 10, 25);

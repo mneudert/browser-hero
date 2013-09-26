@@ -17,8 +17,8 @@ class Renderer
 
   void start(Game g)
   {
-    layer.width = 640;
-    layer.height = 40 + g.level.current * 41;
+    layer.width = 800;
+    layer.height = 36 + g.level.current * 37;
 
     this.game = g;
   }
@@ -28,15 +28,11 @@ class Renderer
     layer.clear();
 
     game.level.draw(layer);
-
-    layer.ctx.font = '20px Georgia';
-    layer.ctx.fillStyle = 'yellow';
-    layer.ctx.textAlign = 'right';
-    layer.ctx.fillText('FPS: ${game.loopFps}', 630, 25);
+    game.fps.draw(layer);
 
     layer.ctx.beginPath();
-    layer.ctx.moveTo(0, 40);
-    layer.ctx.lineTo(640, 40);
+    layer.ctx.moveTo(0, 36);
+    layer.ctx.lineTo(800, 36);
     layer.ctx.lineWidth = 1;
     layer.ctx.strokeStyle = 'grey';
     layer.ctx.stroke();

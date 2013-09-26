@@ -3,6 +3,7 @@ library game;
 import 'dart:html';
 import 'util.dart';
 
+part 'game/fps.dart';
 part 'game/level.dart';
 part 'game/renderer.dart';
 
@@ -10,11 +11,7 @@ class Game
 {
   int keyPressed = 0;
 
-  int loopFrames = 0;
-  double loopLastTime;
-  double loopCurrent = 0.0;
-  int loopFps = 0;
-
+  Fps fps;
   Level level;
   Renderer renderer;
 
@@ -27,6 +24,7 @@ class Game
   {
     print('Game::start');
 
+    fps   = new Fps(this);
     level = new Level(this);
 
     level.start();
@@ -37,23 +35,8 @@ class Game
 
   void loop(double loopTime)
   {
-    if (loopLastTime == null) {
-      loopLastTime = loopTime;
-    }
-
+    fps.update(loopTime);
     renderer.update();
-
-    double delta = loopTime - loopLastTime;
-    loopLastTime = loopTime;
-
-    loopCurrent += delta;
-    loopFrames++;
-
-    if (loopCurrent > 1000) {
-      loopFps = (1000 * loopFrames / loopCurrent).toInt();
-      loopCurrent = 0.0;
-      loopFrames = 0;
-    }
 
     window.requestAnimationFrame(loop);
   }
