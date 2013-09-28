@@ -54,7 +54,6 @@ class Game
       return;
     }
 
-    keyPressed = event.keyCode;
-    print('Game::handleKey ${event.keyCode}');
+    level.hitTarget(renderer.layer, event.keyCode);
   }
 }

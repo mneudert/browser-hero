@@ -101,4 +101,12 @@ class Level
       targets.remove(destructable);
     }
   }
+
+  void hitTarget(RenderLayer layer, int hitCode) {
+    for (var target in targets) {
+      if (target.tryHit(hitCode)) {
+        return;
+      }
+    }
+  }
 }
