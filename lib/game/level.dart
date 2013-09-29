@@ -44,6 +44,8 @@ class Level
 
     createTargets(layer);
     drawTargets(layer);
+
+    scoreTargets();
   }
 
   void createTargets(RenderLayer layer)
@@ -85,7 +87,8 @@ class Level
     }
   }
 
-  void drawTargets(RenderLayer layer) {
+  void drawTargets(RenderLayer layer)
+  {
     List destructables = [];
     int now            = new DateTime.now().millisecondsSinceEpoch;
 
@@ -102,7 +105,29 @@ class Level
     }
   }
 
-  void hitTarget(RenderLayer layer, int hitCode) {
+  void scoreTargets()
+  {
+    for (var target in targets) {
+      if (target.scored) {
+        continue;
+      }
+
+      if (target.targetHit) {
+        target.scored = true;
+
+        game.score.hits++;
+      }
+
+      if (!target.targetHit && 180 > target.position) {
+        target.scored = true;
+
+        game.score.misses++;
+      }
+    }
+  }
+
+  void hitTarget(RenderLayer layer, int hitCode)
+  {
     for (var target in targets) {
       if (target.tryHit(hitCode)) {
         return;

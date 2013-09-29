@@ -29,5 +29,6 @@ class Renderer
 
     game.level.draw(layer);
     game.fps.draw(layer);
+    game.score.draw(layer);
   }
 }

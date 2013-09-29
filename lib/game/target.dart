@@ -3,6 +3,7 @@ part of game;
 class Target
 {
   int position   = 800;
+  bool scored    = false;
   bool allowHit  = false;
   bool targetHit = false;
 

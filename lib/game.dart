@@ -7,6 +7,7 @@ import 'util.dart';
 part 'game/fps.dart';
 part 'game/level.dart';
 part 'game/renderer.dart';
+part 'game/score.dart';
 part 'game/target.dart';
 
 class Game
@@ -16,6 +17,7 @@ class Game
   Fps fps;
   Level level;
   Renderer renderer;
+  Score score;
 
   Game() : renderer = new Renderer()
   {
@@ -28,6 +30,7 @@ class Game
 
     fps   = new Fps(this);
     level = new Level(this);
+    score = new Score(this);
 
     level.start();
     renderer.start(this);
