@@ -14,8 +14,6 @@ class Level
 
   void start()
   {
-    print('Level::start');
-
     current     = 1;
     targets     = [];
     targetTimes = [];

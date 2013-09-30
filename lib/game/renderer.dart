@@ -7,8 +7,6 @@ class Renderer
 
   Renderer()
   {
-    print('Renderer::construct');
-
     layer = new RenderLayer();
     layer.canvas.id = 'game';
 

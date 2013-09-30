@@ -19,15 +19,10 @@ class Game
   Renderer renderer;
   Score score;
 
-  Game() : renderer = new Renderer()
-  {
-    print('Game::construct');
-  }
+  Game() : renderer = new Renderer();
 
   void start()
   {
-    print('Game::start');
-
     fps   = new Fps(this);
     level = new Level(this);
     score = new Score(this);
