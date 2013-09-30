@@ -1,10 +1,7 @@
 import 'dart:html';
-import '../lib/game.dart';
+import 'package:polymer/polymer.dart';
 
 main() {
-  Game game = new Game();
-  game.start();
-
-  document.onKeyDown.listen(game.handleKey);
-  document.onKeyUp.listen(game.handleKey);
+  query('#loader').remove();
+  document.body.nodes.add(createElement('hero-game'));
 }

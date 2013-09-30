@@ -23,6 +23,9 @@ class Game
 
   void start()
   {
+    document.onKeyDown.listen(handleKey);
+    document.onKeyUp.listen(handleKey);
+
     fps   = new Fps(this);
     level = new Level(this);
     score = new Score(this);

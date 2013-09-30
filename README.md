@@ -2,8 +2,5 @@
 
 ## Running
 
-    pub install
-    pub deploy
-    cd deploy && python -m SimpleHTTPServer 8080
+> Dart-Editor => run "index.html"
 
-open http://localhost:8080/

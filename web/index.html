@@ -3,11 +3,16 @@
   <head>
     <title>Browser Hero</title>
     <link href="browser_hero.css" media="all" rel="stylesheet" type="text/css" />
+
+    <link rel="import" href="_hero_game.html">
+    <link rel="import" href="_hero_loader.html">
+
+    <script src="packages/polymer/boot.js"></script>
   </head>
 
   <body>
-    <h1>Browser Hero</h1>
+    <hero-loader id="loader"></hero-loader>
 
-    <script src="browser_hero.dart.js" type="text/javascript"></script>
+    <script src="browser_hero.dart" type="application/dart"></script>
   </body>
 </html>
