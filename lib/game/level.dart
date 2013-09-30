@@ -16,13 +16,15 @@ class Level
   {
     print('Level::start');
 
-    current     = 3;
+    current     = 1;
     targets     = [];
     targetTimes = [];
   }
 
   void draw(RenderLayer layer)
   {
+    layer.height = 36 + current * 37;
+
     layer.ctx.font      = '20px monospace';
     layer.ctx.fillStyle = 'rgb(229, 229, 76)';
     layer.ctx.textAlign = 'left';
@@ -55,12 +57,12 @@ class Level
     if (null == lastTarget) {
       lastTarget  = now;
       targetTimes = [];
+    }
 
-      for (int i = 0; i < current; i++) {
+    if (targetTimes.length < current) {
+      for (int i = targetTimes.length; i < current; i++) {
         targetTimes.add(now);
       }
-
-      return;
     }
 
     if (lastTarget == now) {
@@ -124,6 +126,8 @@ class Level
         game.score.misses++;
       }
     }
+
+    current = 1 + (game.score.hits / 10).toInt();
   }
 
   void hitTarget(RenderLayer layer, int hitCode)
