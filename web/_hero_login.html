@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<polymer-element name="hero-login" extends="form">
+  <template>
+    <h1>Login</h1>
+    
+    <form on-submit="login">
+      <input name="nickname" type="text" value="{{nickname}}" placeholder="Your Nickname" />
+      <button type="submit">Login</button>
+    </form>
+  </template>
+  
+  <script type="application/dart" src="_hero_login.dart"></script>
+</polymer-element>

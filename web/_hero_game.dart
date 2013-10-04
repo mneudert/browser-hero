@@ -5,11 +5,8 @@ import '../lib/game.dart';
 
 @CustomTag("hero-game")
 class HeroGame extends PolymerElement {
-  void created()
-  {
-    super.created();
-
-    Game game = new Game();
+  void inserted() {
+    Game game = new Game(dataset['nickname']);
     game.start();
   }
 }
