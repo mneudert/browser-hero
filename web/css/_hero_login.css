@@ -1,0 +1,59 @@
+/**
+ * Login Box Styling
+ */
+.login-box {
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    box-shadow: 0 0 68px rgba(93, 135, 146, 0.7);
+    height: 288px;
+    left: 50%;
+    margin: -144px 0 0 -250px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 500px;
+    z-index: 10;
+}
+
+.login-content {
+    background: rgb(244, 244,244);
+    border: 1px dotted rgb(204, 204, 204);
+    border-radius: 20px;
+    height: 270px;
+    margin: 8px;
+    padding: 0 64px;
+}
+
+.login-title {
+    border-radius: 20px 20px 0 0;
+    color: rgb(0, 0, 0);
+    font-size: 64px;
+    line-height: 102px;
+    margin: 0 0 12px 0;
+}
+
+.login-nickname {
+    border-radius: 12px;
+    display: inline-block;
+    height: 38px;
+    font-size: 26px;
+    line-height: 48px;
+    padding: 4px 6px;
+    vertical-align: middle;
+    width: 338px;
+}
+
+.login-button {
+    background-color: rgb(40, 40, 40);
+    border: 1px solid;
+    border-radius: 8px;
+    color: rgb(250, 250, 250);
+    cursor: pointer;
+    font-size: 24px;
+    margin-top: 32px;
+    padding: 8px 32px;
+}
+
+.login-button:hover {
+  background-color: rgb(90, 90, 90);
+}

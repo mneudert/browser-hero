@@ -5,6 +5,8 @@ import 'package:polymer/polymer.dart';
 
 @CustomTag("hero-login")
 class HeroLogin extends PolymerElement with ObservableMixin {
+  bool get applyAuthorStyles => true;
+
   @observable String nickname = window.localStorage['nickname'];
 
   void login(Event e) {

@@ -3,7 +3,6 @@
  */
 .loader-box {
     background-color: rgb(255, 255, 255);
-    border: 1px solid dotted inset 2px;
     border-radius: 25px;
     box-shadow: 0 0 68px rgba(93, 135, 146, 0.7);
     height: 120px;
