@@ -4,7 +4,7 @@ import 'package:polymer/polymer.dart';
 main() {
   window.on['login'].listen(handleLogin);
 
-  query('#loader').remove();
+  query('hero-loader').remove();
   document.body.nodes.add(createElement('hero-login'));
 }
 
@@ -15,10 +15,9 @@ void handleLogin(CustomEvent e) {
     return;
   }
 
-  query('hero-login').remove();
-
   var gameNode                 = createElement('hero-game');
   gameNode.dataset['nickname'] = nickname;
 
+  query('hero-login').remove();
   document.body.nodes.add(gameNode);
 }
