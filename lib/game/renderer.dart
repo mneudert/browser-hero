@@ -7,26 +7,25 @@ class Renderer
 
   Renderer()
   {
-    layer = new RenderLayer();
-    layer.canvas.id = 'game';
+    this.layer           = new RenderLayer();
+    this.layer.canvas.id = 'game-layer';
 
-    document.body.nodes.add(layer.canvas);
+    query('#game').children.add(this.layer.canvas);
   }
 
   void start(Game g)
   {
-    layer.width = 800;
-    layer.height = 36 + g.level.current * 37;
-
-    this.game = g;
+    this.game         = g;
+    this.layer.width  = 800;
+    this.layer.height = 36 + g.level.current * 37;
   }
 
   void update()
   {
-    layer.clear();
+    this.layer.clear();
 
-    game.level.draw(layer);
-    game.fps.draw(layer);
-    game.score.draw(layer);
+    this.game.level.draw(layer);
+    this.game.fps.draw(layer);
+    this.game.score.draw(layer);
   }
 }
