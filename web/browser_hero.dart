@@ -19,14 +19,7 @@ void handleLogin(CustomEvent e) {
   var wrapper = new Element.div();
   wrapper.id  = 'game';
 
-  var gameHeader           = createElement('hero-game-header');
-  gameHeader.xtag.nickname = nickname;
-
-  var gameNode           = createElement('hero-game');
-  gameNode.xtag.nickname = nickname;
-
-  wrapper.children.add(gameHeader);
-  wrapper.children.add(gameNode);
+  _constructGameArea(wrapper, nickname);
 
   query('hero-login').remove();
   document.body.nodes.add(wrapper);
@@ -35,4 +28,20 @@ void handleLogin(CustomEvent e) {
 void handleLogout(_) {
   query('#game').remove();
   document.body.nodes.add(createElement('hero-login'));
+}
+
+void _constructGameArea(Element wrapper, String nickname) {
+  var gameHeader  = createElement('hero-game-header');
+  var gameNode    = createElement('hero-game');
+  var gameWrapper = new Element.div();
+  var gameFooter  = createElement('hero-game-footer');
+
+  gameHeader.xtag.nickname = nickname;
+  gameNode.xtag.nickname   = nickname;
+  gameWrapper.id           = 'game-wrapper';
+
+  wrapper.children.add(gameHeader);
+  wrapper.children.add(gameNode);
+  wrapper.children.add(gameWrapper);
+  wrapper.children.add(gameFooter);
 }
