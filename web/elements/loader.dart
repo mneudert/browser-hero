@@ -1,8 +1,8 @@
-library hero_loader;
+library element_loader;
 
 import 'package:polymer/polymer.dart';
 
 @CustomTag("hero-loader")
-class HeroLoader extends PolymerElement {
+class LoaderElement extends PolymerElement {
   bool get applyAuthorStyles => true;
 }

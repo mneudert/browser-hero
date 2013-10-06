@@ -1,6 +1,6 @@
-@import url("_hero_game_header.css");
-@import url("_hero_loader.css");
-@import url("_hero_login.css");
+@import url("elements/game_header.css");
+@import url("elements/loader.css");
+@import url("elements/login.css");
 
 /**
  * Non-Imported Stylings

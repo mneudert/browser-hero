@@ -1,10 +1,10 @@
-library hero_game;
+library element_game;
 
 import 'package:polymer/polymer.dart';
-import '../lib/game.dart';
+import '../../lib/game.dart';
 
 @CustomTag("hero-game")
-class HeroGame extends PolymerElement {
+class GameElement extends PolymerElement {
   String nickname = '';
 
   void inserted() {
