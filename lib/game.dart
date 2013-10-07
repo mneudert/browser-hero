@@ -12,25 +12,23 @@ part 'game/target.dart';
 
 class Game
 {
-  int keyPressed  = 0;
-  String nickname = '';
+  int keyPressed = 0;
+  int startLevel = 1;
 
   Fps fps;
   Level level;
   Renderer renderer;
   Score score;
 
-  Game(this.nickname) : renderer = new Renderer();
+  Game(this.startLevel) : renderer = new Renderer();
 
   void start()
   {
-    print('Starting game for: ${nickname}');
-
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
     fps   = new Fps(this);
-    level = new Level(this);
+    level = new Level(this, this.startLevel);
     score = new Score(this);
 
     level.start();

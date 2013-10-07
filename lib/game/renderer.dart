@@ -17,7 +17,7 @@ class Renderer
   {
     this.game         = g;
     this.layer.width  = 800;
-    this.layer.height = 36 + g.level.current * 37;
+    this.layer.height = 36 + g.level.currentLevel * 37;
   }
 
   void update()

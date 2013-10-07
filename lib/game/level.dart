@@ -4,34 +4,35 @@ class Level
 {
   Game game;
 
-  int current;
+  int startLevel;
+  int currentLevel;
 
   int lastTarget;
   List targets;
   List targetTimes;
 
-  Level(this.game);
+  Level(this.game, this.startLevel);
 
   void start()
   {
-    current     = 1;
-    targets     = [];
-    targetTimes = [];
+    this.currentLevel = this.startLevel;
+    this.targets      = [];
+    this.targetTimes  = [];
   }
 
   void draw(RenderLayer layer)
   {
-    layer.height = 36 + current * 37;
+    layer.height = 36 + this.currentLevel * 37;
 
     layer.ctx.font      = '20px monospace';
     layer.ctx.fillStyle = 'rgb(229, 229, 76)';
     layer.ctx.textAlign = 'left';
-    layer.ctx.fillText('Level: ${current}', 10, 25);
+    layer.ctx.fillText('Level: ${this.currentLevel}', 10, 25);
 
     layer.ctx.fillStyle = 'rgba(102, 229, 102, 0.85)';
-    layer.ctx.fillRect(180, 37, 120, 37 * current);
+    layer.ctx.fillRect(180, 37, 120, 37 * this.currentLevel);
 
-    for (int i = 0; i < current; i++) {
+    for (int i = 0; i < this.currentLevel; i++) {
       int curX = 36 + 37 * i;
 
       layer.ctx.beginPath();
@@ -50,16 +51,16 @@ class Level
 
   void createTargets(RenderLayer layer)
   {
-    int now = (new DateTime.now().millisecondsSinceEpoch / 1000).toInt();
+    int now = new DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
     if (null == lastTarget) {
-      lastTarget  = now;
-      targetTimes = [];
+      lastTarget       = now;
+      this.targetTimes = [];
     }
 
-    if (targetTimes.length < current) {
-      for (int i = targetTimes.length; i < current; i++) {
-        targetTimes.add(now);
+    if (this.targetTimes.length < this.currentLevel) {
+      for (int i = this.targetTimes.length; i < currentLevel; i++) {
+        this.targetTimes.add(now);
       }
     }
 
@@ -69,8 +70,8 @@ class Level
 
     lastTarget = now;
 
-    for (int i = 0; i < current; i++) {
-      int delta = now - targetTimes[i];
+    for (int i = 0; i < this.currentLevel; i++) {
+      int delta = now - this.targetTimes[i];
 
       if (0 > delta) {
         continue;
@@ -82,8 +83,8 @@ class Level
         continue;
       }
 
-      targetTimes[i] = now;
-      targets.add(new Target(i + 1));
+      this.targetTimes[i] = now;
+      this.targets.add(new Target(i + 1));
     }
   }
 
@@ -92,7 +93,7 @@ class Level
     List destructables = [];
     int now            = new DateTime.now().millisecondsSinceEpoch;
 
-    for (var target in targets) {
+    for (var target in this.targets) {
       target.moveAndDraw(layer, now);
 
       if (target.outOfBounds()) {
@@ -107,7 +108,7 @@ class Level
 
   void scoreTargets()
   {
-    for (var target in targets) {
+    for (var target in this.targets) {
       if (target.scored) {
         continue;
       }
@@ -115,22 +116,22 @@ class Level
       if (target.targetHit) {
         target.scored = true;
 
-        game.score.hits++;
+        this.game.score.hits++;
       }
 
       if (!target.targetHit && 180 > target.position) {
         target.scored = true;
 
-        game.score.misses++;
+        this.game.score.misses++;
       }
     }
 
-    current = 1 + (game.score.hits / 10).toInt();
+    this.currentLevel = this.startLevel + (this.game.score.hits ~/ 10);
   }
 
   void hitTarget(RenderLayer layer, int hitCode)
   {
-    for (var target in targets) {
+    for (var target in this.targets) {
       if (target.tryHit(hitCode)) {
         return;
       }

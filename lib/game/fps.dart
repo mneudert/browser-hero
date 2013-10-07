@@ -25,7 +25,7 @@ class Fps
     frames++;
 
     if (current > 1000) {
-      fps     = (1000 * frames / current).toInt();
+      fps     = 1000 * frames ~/ current;
       current = 0.0;
       frames  = 0;
     }

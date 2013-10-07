@@ -28,7 +28,7 @@ class Target
     }
 
     int moveTime = handleTime - startTime;
-    position     = 800 - (moveTime / 10).toInt();
+    position     = 800 - (moveTime ~/ 10);
     allowHit     = (180 <= position && position <= 300);
 
     layer.ctx.font = '20px monospace bold';
