@@ -5,10 +5,13 @@ import '../../lib/game.dart';
 
 @CustomTag("hero-game")
 class GameElement extends PolymerElement {
-  int level = 1;
+  String nickname;
+
+  int startLevel = 1;
 
   void inserted() {
-    Game game = new Game(this.level);
+    Game game = new Game(this.startLevel, this.nickname);
+
     game.start();
   }
 }

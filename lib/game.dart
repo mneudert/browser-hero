@@ -6,8 +6,8 @@ import 'util.dart';
 
 part 'game/fps.dart';
 part 'game/level.dart';
+part 'game/player.dart';
 part 'game/renderer.dart';
-part 'game/score.dart';
 part 'game/target.dart';
 
 class Game
@@ -15,21 +15,23 @@ class Game
   int keyPressed = 0;
   int startLevel = 1;
 
-  Fps fps;
-  Level level;
-  Renderer renderer;
-  Score score;
+  String nickname;
 
-  Game(this.startLevel) : renderer = new Renderer();
+  Fps      fps;
+  Level    level;
+  Player   player;
+  Renderer renderer;
+
+  Game(this.startLevel, this.nickname) : renderer = new Renderer();
 
   void start()
   {
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
-    fps   = new Fps(this);
-    level = new Level(this, this.startLevel);
-    score = new Score(this);
+    fps    = new Fps(this);
+    level  = new Level(this, this.startLevel);
+    player = new Player(this, this.nickname);
 
     level.start();
     renderer.start(this);

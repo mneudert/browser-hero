@@ -2,15 +2,16 @@ part of game;
 
 class Target
 {
-  int position   = 800;
+  int  position  = 800;
   bool scored    = false;
   bool allowHit  = false;
   bool targetHit = false;
 
   int level;
   int startTime;
-  int targetCode;
-  int targetSize;
+
+  int    targetCode;
+  int    targetSize;
   String targetChar;
 
   Target(this.level)
@@ -28,7 +29,7 @@ class Target
     }
 
     int moveTime = handleTime - startTime;
-    position     = 800 - (moveTime ~/ 10);
+    position     = 800 - (moveTime ~/ 7);
     allowHit     = (180 <= position && position <= 300);
 
     layer.ctx.font = '20px monospace bold';

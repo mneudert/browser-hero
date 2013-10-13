@@ -11,11 +11,13 @@ main() {
 }
 
 void handleGameStart(CustomEvent e) {
+  var gameHeader  = query('hero-game-header');
   var gameNode    = createElement('hero-game');
   var gameWrapper = new Element.div();
 
-  gameNode.xtag.level = e.detail;
-  gameWrapper.id      = 'game-wrapper';
+  gameNode.xtag.nickname   = gameHeader.xtag.nickname;
+  gameNode.xtag.startLevel = e.detail;
+  gameWrapper.id           = 'game-wrapper';
 
   gameWrapper.children.add(gameNode);
 

@@ -7,7 +7,7 @@ class Level
   int startLevel;
   int currentLevel;
 
-  int lastTarget;
+  int  lastTarget;
   List targets;
   List targetTimes;
 
@@ -77,7 +77,7 @@ class Level
         continue;
       }
 
-      int seed = new Random().nextInt(10 - delta);
+      int seed = new Random().nextInt(7 - delta);
 
       if (0 < seed) {
         continue;
@@ -116,17 +116,17 @@ class Level
       if (target.targetHit) {
         target.scored = true;
 
-        this.game.score.hits++;
+        this.game.player.score++;
       }
 
       if (!target.targetHit && 180 > target.position) {
         target.scored = true;
 
-        this.game.score.misses++;
+        this.game.player.health++;
       }
     }
 
-    this.currentLevel = this.startLevel + (this.game.score.hits ~/ 10);
+    this.currentLevel = this.startLevel + (this.game.player.score ~/ 64);
   }
 
   void hitTarget(RenderLayer layer, int hitCode)

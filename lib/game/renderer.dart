@@ -2,7 +2,7 @@ part of game;
 
 class Renderer
 {
-  Game game;
+  Game        game;
   RenderLayer layer;
 
   Renderer()
@@ -26,6 +26,6 @@ class Renderer
 
     this.game.level.draw(layer);
     this.game.fps.draw(layer);
-    this.game.score.draw(layer);
+    this.game.player.draw(layer);
   }
 }
