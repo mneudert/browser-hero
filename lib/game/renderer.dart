@@ -25,7 +25,6 @@ class Renderer
     this.layer.clear();
 
     this.game.level.draw(layer);
-    this.game.fps.draw(layer);
     this.game.player.draw(layer);
   }
 }

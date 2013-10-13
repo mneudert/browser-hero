@@ -4,7 +4,6 @@ import 'dart:html';
 import 'dart:math';
 import 'util.dart';
 
-part 'game/fps.dart';
 part 'game/level.dart';
 part 'game/player.dart';
 part 'game/renderer.dart';
@@ -17,7 +16,6 @@ class Game
 
   String nickname;
 
-  Fps      fps;
   Level    level;
   Player   player;
   Renderer renderer;
@@ -29,7 +27,6 @@ class Game
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
-    fps    = new Fps(this);
     level  = new Level(this, this.startLevel);
     player = new Player(this, this.nickname);
 
@@ -41,7 +38,6 @@ class Game
 
   void loop(double loopTime)
   {
-    fps.update(loopTime);
     renderer.update();
 
     window.requestAnimationFrame(loop);
