@@ -128,8 +128,14 @@ class Level
     }
 
     if (1 > this.game.player.health) {
+      this.game.player.lifes--;
+
       this.game.player.health = 32;
       this.targets            = [];
+    }
+
+    if (1 > this.game.player.lifes) {
+      this.game.stop();
     }
 
     this.currentLevel = this.startLevel + (this.game.player.score ~/ 64);

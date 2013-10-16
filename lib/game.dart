@@ -14,6 +14,7 @@ class Game
   int keyPressed = 0;
   int startLevel = 1;
 
+  bool   playing;
   String nickname;
 
   Level    level;
@@ -27,8 +28,9 @@ class Game
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
-    level  = new Level(this, this.startLevel);
-    player = new Player(this, this.nickname);
+    this.level   = new Level(this, this.startLevel);
+    this.player  = new Player(this, this.nickname);
+    this.playing = true;
 
     level.start();
     renderer.start(this);
@@ -36,11 +38,20 @@ class Game
     window.requestAnimationFrame(loop);
   }
 
+  void stop()
+  {
+    this.playing = false;
+
+    print('game over!');
+  }
+
   void loop(double loopTime)
   {
     renderer.update();
 
-    window.requestAnimationFrame(loop);
+    if (this.playing) {
+      window.requestAnimationFrame(loop);
+    }
   }
 
   void handleKey(KeyboardEvent event)
