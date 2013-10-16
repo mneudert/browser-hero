@@ -7,14 +7,15 @@ class Target
   bool allowHit  = false;
   bool targetHit = false;
 
-  int level;
-  int startTime;
+  Level level;
+  int   startTime;
 
+  int    targetRow;
   int    targetCode;
   int    targetSize;
   String targetChar;
 
-  Target(this.level)
+  Target(this.level, this.targetRow)
   {
     // lowercase ascii letter
     // with uppercase keycode
@@ -29,13 +30,15 @@ class Target
     }
 
     int moveTime = handleTime - startTime;
-    position     = 800 - (moveTime ~/ 7);
-    allowHit     = (180 <= position && position <= 300);
 
-    layer.ctx.font = '20px monospace bold';
+    position = 800 - (moveTime ~/ 7);
+    allowHit = (this.level.hitBoxLeft <= position
+                && position <= this.level.hitBoxRight);
+
+    layer.ctx.font      = '20px monospace bold';
     layer.ctx.fillStyle = getFillStyle(layer);
     layer.ctx.textAlign = 'center';
-    layer.ctx.fillText(targetChar, position, 23 + 37 * level);
+    layer.ctx.fillText(targetChar, position, 23 + 37 * this.targetRow);
   }
 
   String getFillStyle(RenderLayer layer)
@@ -44,7 +47,7 @@ class Target
       targetSize = layer.ctx.measureText(targetChar).width.toInt();
     }
 
-    if (!targetHit && 180 <= position) {
+    if (!targetHit && this.level.hitBoxLeft <= position) {
       return 'rgb(250, 250, 250)';
     }
 

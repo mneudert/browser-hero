@@ -13,10 +13,13 @@ class Player
 
   void draw(RenderLayer layer)
   {
-    layer.ctx.font = '20px monospace';
+    layer.ctx.font = '16px monospace';
     layer.ctx.fillStyle = 'rgb(229, 229, 76)';
-    layer.ctx.textAlign = 'left';
+    layer.ctx.textAlign = 'center';
 
-    layer.ctx.fillText('Score: ${score}', 190, 25);
+    layer.ctx.fillText('[ ${this.nickname} ]', 125, 25);
+    layer.ctx.fillText('Lifes: ${this.lifes}', 325, 25);
+    layer.ctx.fillText('Health: ${this.health}', 475, 25);
+    layer.ctx.fillText('Score: ${this.score}', 675, 25);
   }
 }

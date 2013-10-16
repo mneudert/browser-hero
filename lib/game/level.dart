@@ -11,6 +11,9 @@ class Level
   List targets;
   List targetTimes;
 
+  int  hitBoxLeft  = 125;
+  int  hitBoxRight = 275;
+
   Level(this.game, this.startLevel);
 
   void start()
@@ -24,13 +27,11 @@ class Level
   {
     layer.height = 36 + this.currentLevel * 37;
 
-    layer.ctx.font      = '20px monospace';
-    layer.ctx.fillStyle = 'rgb(229, 229, 76)';
-    layer.ctx.textAlign = 'left';
-    layer.ctx.fillText('Level: ${this.currentLevel}', 10, 25);
-
     layer.ctx.fillStyle = 'rgba(102, 229, 102, 0.85)';
-    layer.ctx.fillRect(180, 37, 120, 37 * this.currentLevel);
+    layer.ctx.fillRect(
+        this.hitBoxLeft, 37,
+        this.hitBoxRight - this.hitBoxLeft, 37 * this.currentLevel
+    );
 
     for (int i = 0; i < this.currentLevel; i++) {
       int curX = 36 + 37 * i;
@@ -84,7 +85,7 @@ class Level
       }
 
       this.targetTimes[i] = now;
-      this.targets.add(new Target(i + 1));
+      this.targets.add(new Target(this, i + 1));
     }
   }
 
@@ -102,7 +103,7 @@ class Level
     }
 
     for (var destructable in destructables) {
-      targets.remove(destructable);
+      this.targets.remove(destructable);
     }
   }
 
@@ -119,11 +120,16 @@ class Level
         this.game.player.score++;
       }
 
-      if (!target.targetHit && 180 > target.position) {
+      if (!target.targetHit && this.hitBoxLeft > target.position) {
         target.scored = true;
 
-        this.game.player.health++;
+        this.game.player.health--;
       }
+    }
+
+    if (1 > this.game.player.health) {
+      this.game.player.health = 32;
+      this.targets            = [];
     }
 
     this.currentLevel = this.startLevel + (this.game.player.score ~/ 64);
