@@ -42,16 +42,17 @@ class Game
   {
     this.playing = false;
 
-    print('game over!');
+    window.dispatchEvent(new CustomEvent('gameOver', detail: player.score));
   }
 
   void loop(double loopTime)
   {
-    renderer.update();
-
-    if (this.playing) {
-      window.requestAnimationFrame(loop);
+    if (!this.playing) {
+      return;
     }
+
+    renderer.update();
+    window.requestAnimationFrame(loop);
   }
 
   void handleKey(KeyboardEvent event)

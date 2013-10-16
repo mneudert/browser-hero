@@ -22,8 +22,6 @@ class GameMenuElement extends PolymerElement with ObservableMixin {
 
     window.localStorage['game-level'] = level;
 
-    var event  = new CustomEvent('gameStart', detail: int.parse(level));
-
-    dispatchEvent(event);
+    dispatchEvent(new CustomEvent('gameStart', detail: int.parse(level)));
   }
 }
