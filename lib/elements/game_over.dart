@@ -1,4 +1,4 @@
-library browser_hero.elements;
+library browser_hero.elements.game_over;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';

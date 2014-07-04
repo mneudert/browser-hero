@@ -1,4 +1,4 @@
-library browser_hero;
+library browser_hero.app;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
