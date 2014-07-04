@@ -1,14 +1,16 @@
 /**
  * Game Footer Styling
  */
-.game-footer {
+hero-game-footer {
   background: rgb(160, 160, 160);
   border-radius: 0 0 20px 20px;
+  display: inline-block;
   margin-top: -16px;
   text-align: center;
+  width: 100%;
 }
 
-.game-footer-info {
+hero-game-footer::shadow .game-footer-info {
   color: white;
   font-size: 12px;
 }

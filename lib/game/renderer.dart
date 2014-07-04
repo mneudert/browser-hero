@@ -1,4 +1,4 @@
-part of game;
+part of browser_hero.game;
 
 class Renderer
 {
@@ -10,7 +10,7 @@ class Renderer
     this.layer           = new RenderLayer();
     this.layer.canvas.id = 'game-layer';
 
-    query('#game-wrapper').children.add(this.layer.canvas);
+    querySelector('#game-wrapper').children.add(this.layer.canvas);
   }
 
   void start(Game g)

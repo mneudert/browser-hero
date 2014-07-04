@@ -1,4 +1,4 @@
-library game;
+library browser_hero.game;
 
 import 'dart:html';
 import 'dart:math';

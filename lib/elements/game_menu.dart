@@ -1,13 +1,17 @@
-library element_login;
+library browser_hero.elements;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 
-@CustomTag("hero-game-menu")
-class GameMenuElement extends PolymerElement with ObservableMixin {
+@CustomTag('hero-game-menu')
+class HeroGameMenu extends PolymerElement {
   bool get applyAuthorStyles => true;
 
   @observable String level = window.localStorage['game-level'];
+
+  HeroGameMenu.created() : super.created() {
+    window.console.debug('HeroGameMenu.created()');
+  }
 
   void gameStart(Event e) {
     e.preventDefault();

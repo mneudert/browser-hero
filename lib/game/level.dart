@@ -1,4 +1,4 @@
-part of game;
+part of browser_hero.game;
 
 class Level
 {

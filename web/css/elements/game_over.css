@@ -1,7 +1,7 @@
 /**
  * Game Over Styling
  */
-.game-over {
+hero-game-over::shadow .game-over {
   font-weight: bold;
   margin: 0 25px 25px;
   text-align: center;

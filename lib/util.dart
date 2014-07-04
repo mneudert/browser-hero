@@ -1,4 +1,4 @@
-library util;
+library browser_hero.util;
 
 import 'dart:html';
 

@@ -1,4 +1,4 @@
-part of util;
+part of browser_hero.util;
 
 class RenderLayer
 {
@@ -8,7 +8,7 @@ class RenderLayer
   RenderLayer()
   {
     canvas = new Element.tag('canvas');
-    ctx = canvas.getContext('2d');
+    ctx    = canvas.getContext('2d');
   }
 
   set width(int value) => canvas.width = value;

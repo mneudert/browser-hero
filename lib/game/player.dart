@@ -1,4 +1,4 @@
-part of game;
+part of browser_hero.game;
 
 class Player
 {
@@ -13,7 +13,7 @@ class Player
 
   void draw(RenderLayer layer)
   {
-    layer.ctx.font = '16px monospace';
+    layer.ctx.font      = '16px monospace';
     layer.ctx.fillStyle = 'rgb(229, 229, 76)';
     layer.ctx.textAlign = 'center';
 

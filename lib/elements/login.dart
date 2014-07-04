@@ -1,13 +1,17 @@
-library element_login;
+library browser_hero.elements;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 
-@CustomTag("hero-login")
-class LoginElement extends PolymerElement with ObservableMixin {
+@CustomTag('hero-login')
+class HeroLogin extends PolymerElement {
   bool get applyAuthorStyles => true;
 
   @observable String nickname = window.localStorage['nickname'];
+
+  HeroLogin.created() : super.created() {
+    window.console.debug('HeroLogin.created()');
+  }
 
   void login(Event e) {
     e.preventDefault();

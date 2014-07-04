@@ -2,5 +2,4 @@
 
 ## Running
 
-> Dart-Editor => run "index.html"
-
+> Dart-Editor => run "web/browser_hero.html"

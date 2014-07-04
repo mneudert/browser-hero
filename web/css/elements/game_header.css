@@ -1,19 +1,19 @@
 /**
  * Game Header Styling
  */
-.game-header {
+hero-game-header::shadow .game-header {
   background: rgb(160, 160, 160);
   border-radius: 20px 20px 0 0;
   margin: -22px 0 16px;
   padding: 6px 32px;
 }
 
-.game-header-nickname {
+hero-game-header::shadow .game-header-nickname {
   display: inline;
   font-size: 31px;
 }
 
-.game-header-logout {
+hero-game-header::shadow .game-header-logout {
   background-color: rgb(180, 0, 0);
   border: none;
   border-radius: 8px;
@@ -24,6 +24,6 @@
   padding: 6px;
 }
 
-.game-header-logout:hover {
+hero-game-header::shadow .game-header-logout:hover {
   background-color: rgb(220, 0, 0);
 }
