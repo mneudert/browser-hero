@@ -1,7 +1,6 @@
 part of browser_hero.game;
 
-class Target
-{
+class Target {
   int  position  = 800;
   bool scored    = false;
   bool allowHit  = false;
@@ -15,16 +14,14 @@ class Target
   int    targetSize;
   String targetChar;
 
-  Target(this.level, this.targetRow)
-  {
+  Target(this.level, this.targetRow) {
     // lowercase ascii letter
     // with uppercase keycode
     targetCode = 65 + new Random().nextInt(25);
     targetChar = new String.fromCharCode(32 + targetCode);
   }
 
-  void moveAndDraw(RenderLayer layer, int handleTime)
-  {
+  void moveAndDraw(RenderLayer layer, int handleTime) {
     if (null == startTime) {
       startTime = handleTime;
     }
@@ -41,8 +38,7 @@ class Target
     layer.ctx.fillText(targetChar, position, 23 + 37 * this.targetRow);
   }
 
-  String getFillStyle(RenderLayer layer)
-  {
+  String getFillStyle(RenderLayer layer) {
     if (null == targetSize) {
       targetSize = layer.ctx.measureText(targetChar).width.toInt();
     }
@@ -58,13 +54,11 @@ class Target
     }
   }
 
-  bool outOfBounds()
-  {
+  bool outOfBounds() {
     return -25 > position;
   }
 
-  bool tryHit(int hitCode)
-  {
+  bool tryHit(int hitCode) {
     if (!allowHit || targetHit || targetCode != hitCode) {
       // never hit twice
       return false;

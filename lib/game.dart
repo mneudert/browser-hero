@@ -9,8 +9,7 @@ part 'game/player.dart';
 part 'game/renderer.dart';
 part 'game/target.dart';
 
-class Game
-{
+class Game {
   int keyPressed = 0;
   int startLevel = 1;
 
@@ -23,8 +22,7 @@ class Game
 
   Game(this.startLevel, this.nickname) : renderer = new Renderer();
 
-  void start()
-  {
+  void start() {
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
@@ -38,15 +36,13 @@ class Game
     window.requestAnimationFrame(loop);
   }
 
-  void stop()
-  {
+  void stop() {
     this.playing = false;
 
     window.dispatchEvent(new CustomEvent('gameOver', detail: player.score));
   }
 
-  void loop(double loopTime)
-  {
+  void loop(double loopTime) {
     if (!this.playing) {
       return;
     }
@@ -55,8 +51,7 @@ class Game
     window.requestAnimationFrame(loop);
   }
 
-  void handleKey(KeyboardEvent event)
-  {
+  void handleKey(KeyboardEvent event) {
     if ('keyup' == event.type) {
       keyPressed = 0;
       return;

@@ -1,7 +1,6 @@
 part of browser_hero.game;
 
-class Player
-{
+class Player {
   String nickname;
   Game   game;
 
@@ -11,8 +10,7 @@ class Player
 
   Player(this.game, this.nickname);
 
-  void draw(RenderLayer layer)
-  {
+  void draw(RenderLayer layer) {
     layer.ctx.font      = '16px monospace';
     layer.ctx.fillStyle = 'rgb(229, 229, 76)';
     layer.ctx.textAlign = 'center';

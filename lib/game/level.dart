@@ -1,7 +1,6 @@
 part of browser_hero.game;
 
-class Level
-{
+class Level {
   Game game;
 
   int startLevel;
@@ -16,21 +15,19 @@ class Level
 
   Level(this.game, this.startLevel);
 
-  void start()
-  {
+  void start() {
     this.currentLevel = this.startLevel;
     this.targets      = [];
     this.targetTimes  = [];
   }
 
-  void draw(RenderLayer layer)
-  {
+  void draw(RenderLayer layer) {
     layer.height = 36 + this.currentLevel * 37;
 
     layer.ctx.fillStyle = 'rgba(102, 229, 102, 0.85)';
     layer.ctx.fillRect(
-        this.hitBoxLeft, 37,
-        this.hitBoxRight - this.hitBoxLeft, 37 * this.currentLevel
+      this.hitBoxLeft, 37,
+      this.hitBoxRight - this.hitBoxLeft, 37 * this.currentLevel
     );
 
     for (int i = 0; i < this.currentLevel; i++) {
@@ -50,8 +47,7 @@ class Level
     scoreTargets();
   }
 
-  void createTargets(RenderLayer layer)
-  {
+  void createTargets(RenderLayer layer) {
     int now = new DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
     if (null == lastTarget) {
@@ -89,8 +85,7 @@ class Level
     }
   }
 
-  void drawTargets(RenderLayer layer)
-  {
+  void drawTargets(RenderLayer layer) {
     List destructables = [];
     int now            = new DateTime.now().millisecondsSinceEpoch;
 
@@ -107,8 +102,7 @@ class Level
     }
   }
 
-  void scoreTargets()
-  {
+  void scoreTargets() {
     for (var target in this.targets) {
       if (target.scored) {
         continue;
@@ -141,8 +135,7 @@ class Level
     this.currentLevel = this.startLevel + (this.game.player.score ~/ 64);
   }
 
-  void hitTarget(RenderLayer layer, int hitCode)
-  {
+  void hitTarget(RenderLayer layer, int hitCode) {
     for (var target in this.targets) {
       if (target.tryHit(hitCode)) {
         return;

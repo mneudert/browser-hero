@@ -1,24 +1,21 @@
 part of browser_hero.util;
 
-class RenderLayer
-{
+class RenderLayer {
   CanvasElement canvas;
   CanvasRenderingContext2D ctx;
 
-  RenderLayer()
-  {
+  RenderLayer() {
     canvas = new Element.tag('canvas');
     ctx    = canvas.getContext('2d');
   }
 
-  set width(int value) => canvas.width = value;
+  set width(int value)  => canvas.width = value;
   set height(int value) => canvas.height = value;
 
   int get height => canvas.height;
-  int get width => canvas.width;
+  int get width  => canvas.width;
 
-  void clear()
-  {
+  void clear() {
     canvas.width = canvas.width;
   }
 }
