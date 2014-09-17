@@ -3,6 +3,8 @@ description: Browser Hero
 
 dependencies:
   polymer: any
+  start: any
+
 transformers:
 - polymer:
     entry_points: web/index.html

@@ -5,7 +5,7 @@
 ```shell
 pub install
 pub build
-pub serve
+dart browser_hero.dart
 ```
 
 Now the application is available at

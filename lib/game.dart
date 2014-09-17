@@ -39,6 +39,10 @@ class Game {
   void stop() {
     this.playing = false;
 
+    HttpRequest
+      .request('/log/highscore/${ player.nickname }/${ player.score }')
+      .then((HttpRequest resp) { return; /* window.console.log(resp); */ });
+
     window.dispatchEvent(new CustomEvent('gameOver', detail: player.score));
   }
 
