@@ -39,8 +39,13 @@ class Game {
   void stop() {
     this.playing = false;
 
+    var scoring = {
+      'nickname': this.player.nickname,
+      'score': '${ 0 + this.player.score }'
+    };
+
     HttpRequest
-      .request('/log/highscore/${ player.nickname }/${ player.score }')
+      .postFormData('/api/highscore', scoring)
       .then((HttpRequest resp) { return; /* window.console.log(resp); */ });
 
     window.dispatchEvent(new CustomEvent('gameOver', detail: player.score));

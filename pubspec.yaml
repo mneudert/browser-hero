@@ -2,6 +2,7 @@ name: browser_hero
 description: Browser Hero
 
 dependencies:
+  cargo: any
   polymer: any
   start: any
 
