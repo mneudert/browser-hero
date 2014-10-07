@@ -1,43 +1,45 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:logging/logging.dart';
 import 'package:cargo/cargo_server.dart';
-import 'package:start/start.dart';
+import 'package:rikulo_commons/io.dart';
+import 'package:stream/stream.dart';
 
-void main() {
-  Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen((rec) {
-    print('${rec.level.name}: ${rec.time}: ${rec.message}');
+final Cargo storage = new Cargo(MODE: CargoMode.FILE, path: "./storage/");
+
+final homeDir = 'build/web';
+final uriMapping = {
+  'get:/api/highscore': apiHighscoreGet,
+  'post:/api/highscore': apiHighscorePost,
+};
+
+void apiHighscoreGet(HttpConnect connect) {
+  storage
+    .getItem('highscores', defaultValue: new List())
+    .then((highscores) {
+      connect.response
+        ..headers.contentType = getContentType('json')
+        ..write(JSON.encode(highscores));
   });
+}
 
-  final Logger log = new Logger('BrowserHero');
-  final Cargo storage = new Cargo(MODE: CargoMode.FILE, path: "./storage/");
+void apiHighscorePost(HttpConnect connect) {
+  connect.response.statusCode = HttpStatus.NO_CONTENT;
 
-  storage.start();
+  HttpUtil
+    .decodePostedParameters(connect.request)
+    .then((Map<String, String> scoring) {
+      connect.server.logger.info('Highscore for "${ scoring['nickname'] }": ${ scoring['score'] }');
 
-  start(port: 8080).then((Server app) {
-    app.static('build/web');
-
-    app.get('/api/highscore').listen((request) {
       storage
         .getItem('highscores', defaultValue: new List())
-        .then((highscores) { request.response.json(highscores); });
-    });
-
-    app.post('/api/highscore').listen((request) {
-      request.payload().then((scoring) {
-        log.fine('Highscore for "${ scoring['nickname'] }": ${ scoring['score'] }');
-
-        storage
-          .getItem('highscores', defaultValue: new List())
-          .then((highscores) {
-            highscores.add(scoring);
-            storage.setItem('highscores', highscores);
-        });
+        .then((highscores) {
+          highscores.add(scoring);
+          storage.setItem('highscores', highscores);
       });
-
-      request.response
-        .status(HttpStatus.NO_CONTENT)
-        .close();
-    });
   });
+}
+
+void main() {
+  new StreamServer(uriMapping: uriMapping, homeDir: homeDir)
+    .start(port: 8080);
 }

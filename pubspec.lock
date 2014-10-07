@@ -20,11 +20,11 @@ packages:
   cargo:
     description: cargo
     source: hosted
-    version: "0.3.5+6"
+    version: "0.3.5+8"
   code_transformers:
     description: code_transformers
     source: hosted
-    version: "0.2.3"
+    version: "0.2.3+1"
   collection:
     description: collection
     source: hosted
@@ -37,10 +37,6 @@ packages:
     description: html5lib
     source: hosted
     version: "0.12.0"
-  http_server:
-    description: http_server
-    source: hosted
-    version: "0.9.3"
   logging:
     description: logging
     source: hosted
@@ -60,7 +56,7 @@ packages:
   polymer:
     description: polymer
     source: hosted
-    version: "0.14.2+1"
+    version: "0.15.0+1"
   polymer_expressions:
     description: polymer_expressions
     source: hosted
@@ -69,6 +65,10 @@ packages:
     description: pool
     source: hosted
     version: "1.0.1"
+  rikulo_commons:
+    description: rikulo_commons
+    source: hosted
+    version: "1.1.2+2"
   smoke:
     description: smoke
     source: hosted
@@ -85,10 +85,10 @@ packages:
     description: stack_trace
     source: hosted
     version: "1.0.2"
-  start:
-    description: start
+  stream:
+    description: stream
     source: hosted
-    version: "0.2.7"
+    version: "1.2.3"
   string_scanner:
     description: string_scanner
     source: hosted
@@ -96,7 +96,7 @@ packages:
   template_binding:
     description: template_binding
     source: hosted
-    version: "0.13.0"
+    version: "0.13.0+1"
   utf:
     description: utf
     source: hosted
@@ -108,7 +108,7 @@ packages:
   web_components:
     description: web_components
     source: hosted
-    version: "0.7.0"
+    version: "0.8.0"
   yaml:
     description: yaml
     source: hosted
