@@ -6,12 +6,20 @@
     <template>
       <div class="game-menu">
         <form on-submit="{{ gameStart }}">
-          <label for="gameStartLevel">Start Level</label>
-          <input id="gameStartLevel" name="startLevel" type="number" value="{{ startLevel }}" min="1" />
+          <label for="levelStart">Start Level</label>
+          <input id="levelStart" name="levelStart" type="number" value="{{ levelStart }}" min="1" />
           <br />
 
-          <label for="gameMaxLevel">Max Level</label>
-          <input id="gameMaxLevel" name="maxLevel" type="number" value="{{ maxLevel }}" min="0" />
+          <label for="levelMax">Max Level</label>
+          <input id="levelMax" name="levelMax" type="number" value="{{ levelMax }}" min="0" />
+          <br />
+
+          <label for="playerLifes">Lifes</label>
+          <input id="playerLifes" name="playerLifes" type="number" value="{{ playerLifes }}" min="1" />
+          <br />
+
+          <label for="playerHealth">Health</label>
+          <input id="playerHealth" name="playerHealth" type="number" value="{{ playerHealth }}" min="1" />
           <br />
 
           <button type="submit">Start</button>

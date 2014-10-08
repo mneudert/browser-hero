@@ -10,9 +10,11 @@ part 'game/renderer.dart';
 part 'game/target.dart';
 
 class Game {
-  int keyPressed = 0;
-  int startLevel = 1;
-  int maxLevel   = 0;
+  int keyPressed   = 0;
+  int levelMax     = 0;
+  int levelStart   = 1;
+  int playerHealth = 32;
+  int playerLifes  = 4;
 
   bool   playing;
   String nickname;
@@ -21,16 +23,16 @@ class Game {
   Player   player;
   Renderer renderer;
 
-  Game(this.startLevel,
-       this.maxLevel,
+  Game(this.levelStart, this.levelMax,
+       this.playerHealth, this.playerLifes,
        this.nickname) : renderer = new Renderer();
 
   void start() {
     document.onKeyDown.listen(handleKey);
     document.onKeyUp.listen(handleKey);
 
-    this.level   = new Level(this, this.startLevel, this.maxLevel);
-    this.player  = new Player(this, this.nickname);
+    this.level   = new Level(this, this.levelStart, this.levelMax);
+    this.player  = new Player(this, this.nickname, this.playerHealth, this.playerLifes);
     this.playing = true;
 
     level.start();

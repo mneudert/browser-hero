@@ -7,42 +7,58 @@ import 'package:polymer/polymer.dart';
 class HeroGameMenu extends PolymerElement {
   bool get applyAuthorStyles => true;
 
-  @observable String startLevel = '1';
-  @observable String maxLevel   = '0';
+  @observable String levelMax     = '0';
+  @observable String levelStart   = '1';
+  @observable String playerHealth = '32';
+  @observable String playerLifes  = '4';
 
   HeroGameMenu.created() : super.created() {
     window.console.debug('HeroGameMenu.created()');
 
-    if (null != window.localStorage['game-start-level']) {
-      this.startLevel = window.localStorage['game-start-level'];
+    if (null != window.localStorage['levelMax']) {
+      this.levelMax = window.localStorage['levelMax'];
     }
 
-    if (null != window.localStorage['game-max-level']) {
-      this.maxLevel = window.localStorage['game-max-level'];
+    if (null != window.localStorage['levelStart']) {
+      this.levelStart = window.localStorage['levelStart'];
+    }
+
+    if (null != window.localStorage['playerHealth']) {
+      this.playerHealth = window.localStorage['playerHealth'];
+    }
+
+    if (null != window.localStorage['playerLifes']) {
+      this.playerLifes = window.localStorage['playerLifes'];
     }
   }
 
   void gameStart(Event e) {
     e.preventDefault();
 
-    var startLevel = int.parse(this.startLevel);
-    var maxLevel   = int.parse(this.maxLevel);
+    var levelMax     = int.parse(this.levelMax);
+    var levelStart   = int.parse(this.levelStart);
+    var playerHealth = int.parse(this.playerHealth);
+    var playerLifes  = int.parse(this.playerLifes);
 
-    if (1 > startLevel) {
+    if (1 > levelStart || 1 > playerHealth || 1 > playerLifes) {
       return;
     }
 
-    if (maxLevel < startLevel) {
-      maxLevel      = 0;
-      this.maxLevel = '0';
+    if (levelMax < levelStart) {
+      levelMax      = 0;
+      this.levelMax = '0';
     }
 
-    window.localStorage['game-start-level'] = this.startLevel;
-    window.localStorage['game-max-level']   = this.maxLevel;
+    window.localStorage['levelMax']     = this.levelMax;
+    window.localStorage['levelStart']   = this.levelStart;
+    window.localStorage['playerHealth'] = this.playerHealth;
+    window.localStorage['playerLifes']  = this.playerLifes;
 
     Map<String, int> settings = {
-      'startLevel': startLevel,
-      'maxLevel':   maxLevel
+      'levelStart':   levelStart,
+      'levelMax':     levelMax,
+      'playerHealth': playerHealth,
+      'playerLifes':  playerLifes
     };
 
     dispatchEvent(new CustomEvent('gameStart', detail: settings));

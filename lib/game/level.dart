@@ -3,9 +3,9 @@ part of browser_hero.game;
 class Level {
   Game game;
 
-  int startLevel;
-  int maxLevel;
-  int currentLevel;
+  int levelCurrent;
+  int levelMax;
+  int levelStart;
 
   int  lastTarget;
   List targets;
@@ -14,24 +14,24 @@ class Level {
   int  hitBoxLeft  = 125;
   int  hitBoxRight = 275;
 
-  Level(this.game, this.startLevel, this.maxLevel);
+  Level(this.game, this.levelStart, this.levelMax);
 
   void start() {
-    this.currentLevel = this.startLevel;
+    this.levelCurrent = this.levelStart;
     this.targets      = [];
     this.targetTimes  = [];
   }
 
   void draw(RenderLayer layer) {
-    layer.height = 36 + this.currentLevel * 37;
+    layer.height = 36 + this.levelCurrent * 37;
 
     layer.ctx.fillStyle = 'rgba(102, 229, 102, 0.85)';
     layer.ctx.fillRect(
       this.hitBoxLeft, 37,
-      this.hitBoxRight - this.hitBoxLeft, 37 * this.currentLevel
+      this.hitBoxRight - this.hitBoxLeft, 37 * this.levelCurrent
     );
 
-    for (int i = 0; i < this.currentLevel; i++) {
+    for (int i = 0; i < this.levelCurrent; i++) {
       int curX = 36 + 37 * i;
 
       layer.ctx.beginPath();
@@ -56,8 +56,8 @@ class Level {
       this.targetTimes = [];
     }
 
-    if (this.targetTimes.length < this.currentLevel) {
-      for (int i = this.targetTimes.length; i < currentLevel; i++) {
+    if (this.targetTimes.length < this.levelCurrent) {
+      for (int i = this.targetTimes.length; i < this.levelCurrent; i++) {
         this.targetTimes.add(now);
       }
     }
@@ -68,7 +68,7 @@ class Level {
 
     lastTarget = now;
 
-    for (int i = 0; i < this.currentLevel; i++) {
+    for (int i = 0; i < this.levelCurrent; i++) {
       int delta = now - this.targetTimes[i];
 
       if (0 > delta) {
@@ -133,10 +133,10 @@ class Level {
       this.game.stop();
     }
 
-    this.currentLevel = this.startLevel + (this.game.player.score ~/ 1);
+    this.levelCurrent = this.levelStart + (this.game.player.score ~/ 64);
 
-    if (0 < this.maxLevel && this.currentLevel > this.maxLevel) {
-      this.currentLevel = this.maxLevel;
+    if (0 < this.levelMax && this.levelCurrent > this.levelMax) {
+      this.levelCurrent = this.levelMax;
     }
   }
 

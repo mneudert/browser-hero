@@ -8,7 +8,7 @@ class Player {
   int lifes  =  4;
   int health = 32;
 
-  Player(this.game, this.nickname);
+  Player(this.game, this.nickname, this.health, this.lifes);
 
   void draw(RenderLayer layer) {
     layer.ctx.font      = '16px monospace';

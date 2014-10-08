@@ -45,10 +45,12 @@ class BrowserHero extends PolymerElement {
     var gameNode     = new Element.tag('hero-game');
     var gameWrapper  = new Element.div();
 
-    gameNode.xtag.nickname   = gameHeader.xtag.nickname;
-    gameNode.xtag.startLevel = settings['startLevel'];
-    gameNode.xtag.maxLevel   = settings['maxLevel'];
-    gameWrapper.id           = 'game-wrapper';
+    gameNode.xtag.nickname     = gameHeader.xtag.nickname;
+    gameNode.xtag.levelMax     = settings['levelMax'];
+    gameNode.xtag.levelStart   = settings['levelStart'];
+    gameNode.xtag.playerHealth = settings['playerHealth'];
+    gameNode.xtag.playerLifes  = settings['playerLifes'];
+    gameWrapper.id             = 'game-wrapper';
 
     gameWrapper.children.add(gameNode);
 
