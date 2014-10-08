@@ -5,8 +5,15 @@
   <polymer-element name="hero-game-menu">
     <template>
       <div class="game-menu">
-        <form on-submit="{{gameStart}}">
-          <input name="level" type="text" value="{{level}}" />
+        <form on-submit="{{ gameStart }}">
+          <label for="gameStartLevel">Start Level</label>
+          <input id="gameStartLevel" name="startLevel" type="number" value="{{ startLevel }}" min="1" />
+          <br />
+
+          <label for="gameMaxLevel">Max Level</label>
+          <input id="gameMaxLevel" name="maxLevel" type="number" value="{{ maxLevel }}" min="0" />
+          <br />
+
           <button type="submit">Start</button>
         </form>
       </div>

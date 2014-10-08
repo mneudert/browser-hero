@@ -4,6 +4,7 @@ class Level {
   Game game;
 
   int startLevel;
+  int maxLevel;
   int currentLevel;
 
   int  lastTarget;
@@ -13,7 +14,7 @@ class Level {
   int  hitBoxLeft  = 125;
   int  hitBoxRight = 275;
 
-  Level(this.game, this.startLevel);
+  Level(this.game, this.startLevel, this.maxLevel);
 
   void start() {
     this.currentLevel = this.startLevel;
@@ -132,7 +133,11 @@ class Level {
       this.game.stop();
     }
 
-    this.currentLevel = this.startLevel + (this.game.player.score ~/ 64);
+    this.currentLevel = this.startLevel + (this.game.player.score ~/ 1);
+
+    if (0 < this.maxLevel && this.currentLevel > this.maxLevel) {
+      this.currentLevel = this.maxLevel;
+    }
   }
 
   void hitTarget(RenderLayer layer, int hitCode) {

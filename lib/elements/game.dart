@@ -7,6 +7,7 @@ import 'package:browser_hero/game.dart';
 @CustomTag('hero-game')
 class HeroGame extends PolymerElement {
   int startLevel = 1;
+  int maxLevel   = 0;
 
   @observable String nickname = '';
 
@@ -15,7 +16,7 @@ class HeroGame extends PolymerElement {
   }
 
   void attached() {
-    Game game = new Game(this.startLevel, this.nickname);
+    Game game = new Game(this.startLevel, this.maxLevel, this.nickname);
     game.start();
   }
 }
